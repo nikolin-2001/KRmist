@@ -1,0 +1,15 @@
+language: python
+python:
+- 3.8
+services:
+- postgresql
+install:
+- psql -c 'create database django_db owner postgres;' -U postgres
+- pip install -r requirements.txt
+script:
+- python manage.py migrate
+deploy:
+  provider: heroku
+  api_key:
+    secure: ielRxZ12qNC5XnEafe7nps6fNP4eui3W44T+PIJv+zY70r29I+roq6FwzqB+JnV858Tw27B2JU6fpgpUd6zdKCOBqPGPBDNti/jhTA0iCldVGec5VVzGfjut0+O/YHY0M7oMpIRLGHzUjzyVmMtGo8vAoiSezsV5ygkBZcel2W4T3xkwGcwhgibCVNoZRiBOL3SxNID5Apb+F1CilTrDd4t76KMJGvr5E8Xs9FvGEBt+WNakuf9QFos3gn8m+7CwSgHqtTxOOhbDHMkE+q0CuEWOWzkOGwLyWidoJsgsdVi4jM+FgIbNi/hdetjaQVsbst78W5zJ4wtEmmqyi7RsTY/BuB18wNCa3ldnWJeCawXIZyHVytzFo67T79kiqZ/rV9dnGFFoPy4taJLTgmqH6NED7nG1tzVfW0ulThyNYnBZcLFL4s41mgDQUGrsZrdS6xlsigu01szc338qPPcKLOkcALimDW+wZ+dZam1BUbXdkY4geTOwybbbpjhCszmZ2mSvWTIp2PPAFWqlSdEWNKvjjIFAsqXvQfbpYssHKEnfFWV/+sVK5vduQo0KCAeFk1oyyxWSi8fjD6LXhTXCWWax1D2ax7z34MOm0MJg4Zcw7AEVoaoG1KiwcjwApsHKsx4cuFcmmyV7/FexY61co75O9epVNekp19Q65zluqZI=
+  app: kr-nikitin
